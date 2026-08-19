@@ -413,12 +413,6 @@
     font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
     color: var(--red-deep);
   }
-  .hero-photo.full-bleed .credit {
-    position: absolute;
-    bottom: 24px; right: clamp(20px, 4vw, 56px);
-    color: var(--white);
-    text-shadow: 0 1px 8px rgba(0,0,0,.45);
-  }
 
   /* ---------- Article body grid (sticky TOC + column) ---------- */
   .article-grid {
@@ -498,7 +492,7 @@
   .gutter .chip .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
   /* ---------- Section + typography ---------- */
-  section.s { scroll-margin-top: 32px; padding: 64px 0; border-top: 1px solid var(--rule); }
+  section.s { scroll-margin-top: 32px; padding: 52px 0; border-top: 1px solid var(--rule); }
   section.s:first-of-type { border-top: none; padding-top: 8px; }
   .section-num {
     display: flex; align-items: baseline; gap: 16px;
@@ -558,6 +552,7 @@
     letter-spacing: -0.005em;
     text-wrap: balance;
   }
+  blockquote.pull:last-child { margin-bottom: 0; border-bottom: none; }
   blockquote.pull cite {
     display: block;
     margin-top: 24px;
@@ -629,7 +624,8 @@
   .spec-strip .item:last-child { border-right: none; padding-right: 0; }
   .spec-strip .num { font-family: var(--display); font-size: 38px; font-weight: 600; line-height: 1.05; color: var(--red-deep); letter-spacing: -0.015em; font-feature-settings: "lnum"; min-height: calc(38px * 1.05); margin-bottom: 14px; white-space: nowrap; }
   .spec-strip .num small { font-size: 14px; color: var(--ink-soft); font-weight: 400; margin-left: 3px; letter-spacing: 0; }
-  .spec-strip .lbl { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 0; line-height: 1.5; min-height: calc(11px * 1.5 * 2); display: flex; align-items: flex-start; }
+  .spec-strip .lbl { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 0; line-height: 1.5; min-height: calc(11px * 1.5 * 2);
+    display: block; }
 
   /* Stats variant: short numeric headers, centered, compact */
   .spec-strip.stats {
@@ -640,7 +636,8 @@
   .spec-strip.stats .item:last-child { padding-right: 12px; }
   .spec-strip.stats .num { font-size: 28px; line-height: 1; min-height: 30px; margin-bottom: 8px; white-space: nowrap; }
   .spec-strip.stats .num small { font-size: 13px; letter-spacing: 0; margin-left: 3px; }
-  .spec-strip.stats .lbl { min-height: 0; display: flex; align-items: flex-start; justify-content: center; text-align: center; }
+  .spec-strip.stats .lbl { min-height: 0;
+    display: block; text-align: center; }
 
   /* ---------- Safety badge ---------- */
   .safety-banner {
@@ -744,11 +741,12 @@
   }
   .cross-table table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
     font-size: 14px;
   }
   .cross-table thead th {
-    text-align: center;
+    text-align: left;
     padding: 18px 16px;
     font-size: 11px;
     letter-spacing: 0.16em;
@@ -759,7 +757,6 @@
     background: var(--paper-2);
     vertical-align: top;
   }
-  .cross-table thead th:first-child { text-align: left; }
   .cross-table thead th .model {
     display: block;
     font-family: var(--display);
@@ -801,9 +798,10 @@
     text-transform: uppercase;
     color: var(--muted);
     font-weight: 600;
-    width: 22%;
+    width: 27%;
     background: var(--paper-2);
   }
+  .cross-table col.compare { width: 36.5%; }
   .cross-table tbody td {
     font-family: var(--display);
     font-size: 15px;
@@ -1294,7 +1292,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="pip"></span> Engine Comparison · Dalton Toyota National City</div>
     <h1>Tacoma iForce vs <em>iForce Max:</em> which engine?</h1>
-    <p class="deck">The 2026 Toyota Tacoma offers two powertrains. The iForce is a turbocharged gas four-cylinder, and the iForce Max pairs that same turbo gas engine with a hybrid electric motor for more torque and low-end pull. Pick iForce for value and simplicity. Pick iForce Max for towing, torque, and off-road grunt. See both side by side at Dalton Toyota National City, or call our sales desk to confirm which engines are on the lot today.</p>
+    <p class="deck">The 2026 Tacoma offers two powertrains: the iForce turbo gas four-cylinder, and the iForce Max, which adds a hybrid motor for more torque. Pick iForce for value, iForce Max for towing and off-road grunt.</p>
 
     <div class="hero-meta">
       <div class="item"><div class="lbl">Address</div><div class="val">2400 National City Blvd<small>National City, CA 91950</small></div></div>
@@ -1312,7 +1310,6 @@
          fetchpriority="high"
          width="1920"
          height="600" />
-    <span class="credit">DALTON TOYOTA NATIONAL CITY · TACOMA</span>
     <figcaption class="visually-hidden">A 2026 Toyota Tacoma at Dalton Toyota National City, available with the iForce turbo gas engine or the iForce Max hybrid powertrain on the Mile of Cars.</figcaption>
   </figure>
 </header>
@@ -1345,13 +1342,16 @@
         <div class="section-num"><span>01</span><span>The short answer</span></div>
         <h2 class="section-h">Tacoma iForce vs iForce Max <em>at a glance</em>.</h2>
         <p class="lede">Both powertrains share the same turbo gas base. The difference is the hybrid motor and battery on the iForce Max. Below is a plain comparison so you can match the engine to how you actually drive.</p>
-        <p>Dalton Toyota National City is a Toyota dealer at 2400 National City Blvd in National City, California, selling and servicing Toyotas since 1996 and recognized as a Chamber of Commerce Mile of Cars Dealership of the Year. We hold a 4.6-star Google rating across customer reviews. <em>Reviewed and posted by Clarence McClain, General Sales Manager, Dalton Toyota National City.</em></p>
+        <p>Dalton Toyota National City has sold and serviced Toyotas at 2400 National City Blvd since 1996 and is a Chamber of Commerce Mile of Cars Dealership of the Year. We hold a 4.6-star Google rating.</p>
+
+        <p><em>Reviewed and posted by Clarence McClain, General Sales Manager, Dalton Toyota National City.</em></p>
         <p>As of June 2026, exact horsepower, torque, and mileage figures should be confirmed at <a href="https://www.toyota.com/tacoma/" rel="noopener" target="_blank">toyota.com</a> or <a href="https://www.fueleconomy.gov/" rel="noopener" target="_blank">fueleconomy.gov</a>, since 2026 trim packaging changes year to year.</p>
 
         <!-- Desktop comparison table -->
         <div class="cross-table">
           <table>
             <caption class="visually-hidden">Tacoma iForce vs iForce Max comparison</caption>
+            <colgroup><col><col class="compare"><col class="compare"></colgroup>
             <thead>
               <tr>
                 <th scope="col">Factor</th>
@@ -1360,11 +1360,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">Engine type</th><td>Turbo gas 4-cylinder</td><td>Turbo gas 4-cylinder + hybrid motor</td></tr>
-              <tr><th scope="row">Best for</th><td>Daily driving, value, lighter towing</td><td>Heavy towing, torque, off-road</td></tr>
-              <tr><th scope="row">Torque feel</th><td>Strong</td><td>Stronger, with instant low-end</td></tr>
-              <tr><th scope="row">Trim availability</th><td>Lower and mid trims</td><td>Mid and upper trims (TRD, Limited)</td></tr>
-              <tr><th scope="row">Battery/hybrid hardware</th><td>None</td><td>Hybrid battery + electric motor</td></tr>
+              <tr><th scope="row">Engine type</th><td>Turbo gas 4-cylinder</td><td>Turbo gas 4-cyl + hybrid</td></tr>
+              <tr><th scope="row">Best for</th><td>Daily driving and value</td><td>Towing and off-road</td></tr>
+              <tr><th scope="row">Torque feel</th><td>Strong</td><td>Stronger low-end</td></tr>
+              <tr><th scope="row">Trim availability</th><td>Lower and mid trims</td><td>Mid and upper trims</td></tr>
+              <tr><th scope="row">Hybrid hardware</th><td>None</td><td>Battery + electric motor</td></tr>
               <tr><th scope="row">Up-front cost</th><td>Lower</td><td>Higher</td></tr>
             </tbody>
           </table>
@@ -1439,20 +1439,20 @@
         <div class="section-num"><span>04</span><span>From the sales desk</span></div>
         <h2 class="section-h">What we see <em>on the lot</em>.</h2>
         <p class="lede">As of June 2026, our sales team walked the current 2026 Tacoma inventory on the lot and confirmed both powertrains are spec'd across the trim ladder, with iForce Max concentrated on the TRD and upper trims.</p>
-        <p>We pulled the window stickers on several 2026 units that week and verified that the hybrid and non-hybrid trims carry the same Toyota basic and powertrain factory warranty coverage - and that the iForce Max adds hybrid-related component coverage on top: per <a href="https://support.toyota.com/s/article/What-hybrid-warranty-7722" rel="noopener" target="_blank">Toyota's hybrid warranty article</a>, hybrid-related components are covered for 8 years/100,000 miles, and the hybrid battery for 10 years/150,000 miles. Toyota publishes its basic and powertrain warranty terms at <a href="https://www.toyota.com/owners/warranty-owners-manuals" rel="noopener" target="_blank">toyota.com</a>; confirm the figures there for the exact trim.</p>
+        <p>We pulled the window stickers on several 2026 units and confirmed hybrid and non-hybrid trims carry the same basic and powertrain warranty. Per <a href="https://support.toyota.com/s/article/What-hybrid-warranty-7722" rel="noopener" target="_blank">Toyota's hybrid warranty article</a>, hybrid components add 8 years/100,000 miles and the battery 10 years/150,000 miles. Confirm terms for your trim at <a href="https://www.toyota.com/owners/warranty-owners-manuals" rel="noopener" target="_blank">toyota.com</a>.</p>
 
         <h3>Marcus and the 2,000-pound trailer</h3>
-        <p>Last month, a shopper named Marcus came in convinced he needed the iForce Max for a 2,000-pound utility trailer he tows twice a season. Our sales team walked him through both 2026 trucks back to back on the same afternoon. The standard iForce handled his real loads with margin to spare, and he kept the price difference in his pocket. The lesson held: match the engine to the loads you actually pull, not the heaviest load you can imagine.</p>
+        <p>Last month a shopper came in convinced he needed the iForce Max for a 2,000-pound utility trailer he tows twice a season. Our team walked him through both trucks back to back, and the standard iForce handled it with margin to spare. Match the engine to the loads you actually pull.</p>
 
         <blockquote class="pull">
           Match the engine to the loads you actually pull, not the heaviest load you can imagine.
         </blockquote>
 
         <h3>The hybrid story is torque, not mileage</h3>
-        <p>Most buyers assume the hybrid is mainly about fuel savings. Counterintuitively, the bigger story on the iForce Max is torque, not mileage. The electric motor's instant pull is what towing and off-road drivers feel first. In June 2026 we ran two back-to-back demo drives, and both drivers noticed the low-end response before they ever looked at a mileage figure.</p>
+        <p>Most buyers assume the hybrid is mainly about fuel savings, but the bigger story on the iForce Max is torque. The electric motor's instant pull is what towing and off-road drivers feel first. In June 2026 we ran two demo drives, and both drivers noticed the low-end response first.</p>
 
         <h3>Which engine ages better?</h3>
-        <p>When a longtime owner came in this month asking which engine ages better, our service team inspected the build sheets on two in-stock 2026 units and confirmed both share the same turbo gas base and the same basic and powertrain warranty terms - while the hybrid's motor, battery, and related components carry their own longer coverage of 8 years/100,000 miles, with the battery covered for 10 years/150,000 miles. The hybrid adds an electric motor and battery, but the core powertrain is shared. We checked that point against the actual build sheets before answering, rather than guessing from a brochure.</p>
+        <p>A longtime owner came in this month asking which engine ages better. Our service team pulled the build sheets on two in-stock 2026 units and confirmed both share the same turbo gas base and the same basic and powertrain warranty. The hybrid adds a motor and battery with their own longer coverage.</p>
       </section>
 
       <!-- §05 How to decide in five minutes -->
@@ -1493,9 +1493,9 @@
       <section class="s" id="cross-shop">
         <div class="section-num"><span>06</span><span>The wider lineup</span></div>
         <h2 class="section-h">Cross-shopping the rest of the <em>Tacoma and lineup</em>.</h2>
-        <p class="lede">If you are still mapping the lineup, the Tacoma sits below the full-size Tundra. Tundra shoppers often weigh the i-FORCE MAX hybrid there too, and the towing gap between the two trucks is wide. For heavier work, the Tundra is the next step up.</p>
+        <p class="lede">The Tacoma sits below the full-size Tundra, which offers its own i-FORCE MAX hybrid. The towing gap between the two is wide, so for heavier work the Tundra is the next step up.</p>
 
-        <p>We carry the full Toyota truck range at Dalton Toyota National City, founded in 1996 and recognized as a Chamber of Commerce Mile of Cars Dealership of the Year. For independent ownership-cost and reliability research, Toyota trucks tend to score well; KBB rates Toyota highly across its truck range, and you can read third-party takes at <a href="https://www.kbb.com" rel="noopener" target="_blank">kbb.com</a> and <a href="https://www.edmunds.com" rel="noopener" target="_blank">edmunds.com</a> before you visit. Before buying any 2026 truck, it is also worth checking open recalls by VIN at <a href="https://www.nhtsa.gov/recalls" rel="noopener" target="_blank">nhtsa.gov/recalls</a>.</p>
+        <p>We carry the full Toyota truck range. For independent ownership-cost and reliability research, read third-party takes at <a href="https://www.kbb.com" rel="noopener" target="_blank">kbb.com</a> and <a href="https://www.edmunds.com" rel="noopener" target="_blank">edmunds.com</a>. Before buying any 2026 truck, check open recalls by VIN at <a href="https://www.nhtsa.gov/recalls" rel="noopener" target="_blank">nhtsa.gov/recalls</a>.</p>
 
         <p>Want to see both engines side by side? Browse the current <a href="https://www.toyotadalton.com/searchnew.aspx" rel="noopener" target="_blank">new inventory</a>, check <a href="https://www.toyotadalton.com/searchused.aspx" rel="noopener" target="_blank">used and CPO trucks</a>, or <a href="https://www.toyotadalton.com/searchnew.aspx#schedule-service" rel="noopener" target="_blank">schedule service</a> if you already own one. For payment questions, ask us for current offers - call <a class="tel" href="tel:+16194745573">(619) 474-5573</a>.</p>
       </section>
@@ -1504,7 +1504,7 @@
       <section class="s" id="visit">
         <div class="section-num"><span>07</span><span>What to bring · visit us</span></div>
         <h2 class="section-h">What to bring when you <em>compare in person</em>.</h2>
-        <p class="lede">A back-to-back test drive settles most of these decisions. Bring an honest picture of your typical load. Note the heaviest trailer you tow and how often. Tell our team whether you off-road. From there we point you to the right trim.</p>
+        <p class="lede">A back-to-back test drive settles most of these decisions. Come with an honest picture of your typical load, the heaviest trailer you tow, and whether you off-road. From there we point you to the right trim.</p>
 
         <ul class="bullets">
           <li>An honest picture of your typical load - the heaviest trailer you tow and how often.</li>
@@ -1575,7 +1575,7 @@
   <div class="wrap">
     <div class="eyebrow">Dalton Toyota National City</div>
     <h2>A Toyota store on the Mile of Cars <em>since 1996</em>.</h2>
-    <p class="band-deck">We've been part of National City since 1996, recognized as Chamber of Commerce Mile of Cars Dealership of the Year - a track record built on straightforward numbers, deal by deal. We stock the 2026 Toyota Tacoma in both iForce and iForce Max powertrains at 2400 National City Blvd.</p>
+    <p class="band-deck">We've been part of National City since 1996 and were named Chamber of Commerce Mile of Cars Dealership of the Year. We stock the 2026 Tacoma in both iForce and iForce Max at 2400 National City Blvd.</p>
 
     <div class="trust-grid">
       <div class="item">
@@ -1656,14 +1656,14 @@
           <details>
             <summary>Is the iForce Max worth the extra cost?</summary>
             <div class="answer">
-              <p>It depends on how you use the truck. If you tow near the upper limit or off-road on rough trails, the added torque can justify the premium. If your loads are light and budget matters, the iForce may be the smarter buy. We can compare both side by side at the dealership.</p>
+              <p>It depends on how you use the truck. If you tow near the upper limit or off-road on rough trails, the added torque can justify the premium; if your loads are light and budget matters, the iForce is the smarter buy. We'll compare both at the dealership.</p>
             </div>
           </details>
 
           <details>
             <summary>Does the iForce Max have a different warranty than the iForce?</summary>
             <div class="answer">
-              <p>Both Tacoma powertrains carry Toyota's standard new-vehicle factory warranty coverage. Toyota publishes a 3-year/36,000-mile basic warranty and a 5-year/60,000-mile powertrain warranty. On the iForce Max, hybrid-related components carry added coverage of 8 years/100,000 miles, and the hybrid battery 10 years/150,000 miles; confirm the current windows at toyota.com.</p>
+              <p>Both Tacoma powertrains carry Toyota's standard 3-year/36,000-mile basic and 5-year/60,000-mile powertrain warranty. On the iForce Max, hybrid components add 8 years/100,000 miles and the battery 10 years/150,000 miles. Confirm current windows at toyota.com.</p>
               <p>The iForce Max adds hybrid components on top of the shared turbo gas base. For the exact warranty terms on the trim you want, ask our team or review the coverage details at toyota.com.</p>
             </div>
           </details>
@@ -1729,7 +1729,13 @@
           <div style="font-size:12px; color:var(--muted); margin-top:10px; letter-spacing:0.04em;">Dalton Toyota National City · 2400 National City Blvd, National City, CA 91950</div>
         </div>
 
-        <p style="font-size:15px; color:var(--ink-soft); max-width:660px;">2026 Toyota Tacoma iForce and iForce Max powertrain and warranty details described from Toyota's published information at toyota.com. Exact horsepower, torque, towing capacity, and fuel economy vary by trim and change year to year - confirm them at toyota.com and fueleconomy.gov before you buy. We do not publish spec numbers we cannot verify. Before buying any 2026 truck, check open recalls by VIN at nhtsa.gov/recalls. To confirm which engines are on the lot today, call Sales at <a class="tel" href="tel:+16194745573"><strong>(619) 474-5573</strong></a>.</p>
+        <ul class="bullets" style="font-size:15px; color:var(--ink-soft); max-width:660px;">
+          <li><strong>Powertrain &amp; warranty.</strong> iForce and iForce Max details come from Toyota's published information at toyota.com.</li>
+          <li><strong>Specs.</strong> Horsepower, torque, towing, and fuel economy vary by trim and change year to year; confirm at toyota.com and fueleconomy.gov.</li>
+          <li><strong>Recalls.</strong> Check open recalls by VIN at nhtsa.gov/recalls before buying any 2026 truck.</li>
+        </ul>
+
+        <p style="font-size:15px; color:var(--ink-soft); max-width:660px;">To confirm which engines are on the lot today, call Sales at <a class="tel" href="tel:+16194745573"><strong>(619) 474-5573</strong></a>.</p>
 
         <p style="font-size:15px; color:var(--ink-soft); max-width:660px;"><em>If a question about the Tacoma iForce or iForce Max at Dalton Toyota National City is not answered here, call <a class="tel" href="tel:+16194745573">(619) 474-5573</a> and ask for a sales advisor, or browse current Tacoma inventory at <a href="https://www.toyotadalton.com/" rel="noopener" target="_blank">toyotadalton.com</a>.</em></p>
 
